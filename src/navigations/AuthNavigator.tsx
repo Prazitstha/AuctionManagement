@@ -9,7 +9,7 @@ import {
 } from '@react-navigation/drawer';
 
 import BottomTabNavigator from './BottomTabNavigator';
-import Notification from '../screens/primary/HomeScreen/Notification';
+// import Notification from '../screens/primary/HomeScreen/Notification';
 import {NavigationContainer} from '@react-navigation/native';
 import Icon from '../components/common/Icon';
 
@@ -36,6 +36,16 @@ const AuthNavigator = () => {
         component={BottomTabNavigator}
         options={{
           title: 'Home',
+          drawerIcon: ({focused, color, size}) => (
+            <Icon type="ant" name="home" color={color} size={20} />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name={Screen.PURCHASEBIDCOIN}
+        component={BottomTabNavigator}
+        options={{
+          title: 'Purchase Bidcoin',
           drawerIcon: ({focused, color, size}) => (
             <Icon type="ant" name="home" color={color} size={20} />
           ),
@@ -72,29 +82,6 @@ const AuthNavigator = () => {
         }}
       />
     </Drawer.Navigator>
-
-    // <Drawer.Navigator
-    //   initialRouteName={Screen.HOMEDRAWER}
-    //   drawerContent={props => <CustomDrawer {...props} />}
-    //   screenOptions={{
-    //     headerShown: false,
-    //     drawerActiveBackgroundColor: 'blue',
-    //     drawerActiveTintColor: 'white',
-    //     drawerLabelStyle: {
-    //       marginLeft: -20,
-    //     },
-    //   }}>
-    //   <Drawer.Screen
-    //     name={Screen.HOMEDRAWER}
-    //     component={BottomTabNavigator}
-    //     options={{
-    //       title: 'Home',
-    //       // drawerIcon: ({focused, color, size}) => (
-    //       //   <Icon name="home-sharp" size={18} color={color} />
-    //       // ),
-    //     }}
-    //   />
-    // </Drawer.Navigator>
   );
 };
 function CustomDrawerContent(props: any) {
@@ -116,23 +103,11 @@ function CustomDrawerContent(props: any) {
             style={{flex: 1, justifyContent: 'center', paddingHorizontal: 10}}>
             <Text>ID: 2211222</Text>
             <Text style={styles.profileName}>PrajitStha01</Text>
+            <Text style={styles.bidCoinText}>Bid Coins: 0</Text>
           </View>
         </View>
         <View style={{flex: 1, justifyContent: 'space-between'}}>
           <DrawerItemList {...props} />
-          {/* <DrawerItem
-            label={'Logout'}
-            icon={({focused, color, size}) => (
-              <Icon
-                type="ionicon"
-                name="exit-outline"
-                size={size}
-                color={color}
-              />
-            )}
-            onPress={() => {}}
-          /> */}
-          {/* <DrawerItem label="Help" onPress={() => alert('Link to help')} /> */}
         </View>
       </DrawerContentScrollView>
       <View style={{padding: 20, borderTopWidth: 1, borderTopColor: '#ccc'}}>
@@ -148,14 +123,12 @@ function CustomDrawerContent(props: any) {
   );
 }
 
-// const BottomTabNavigator = ({ navigation }) => {
-//   return (
-
-//   );
-// };
-
 export default AuthNavigator;
 const styles = StyleSheet.create({
+  bidCoinText: {
+    color: 'green',
+    fontWeight: '600',
+  },
   profileArea: {
     flexDirection: 'row',
     paddingHorizontal: 20,

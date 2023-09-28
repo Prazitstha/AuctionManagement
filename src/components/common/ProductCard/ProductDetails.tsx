@@ -28,36 +28,36 @@ const ProductDetails = ({navigation}) => {
       created_at: '2023-09-27 00:00:00',
     },
     {
-      sn: '1',
+      sn: '2',
       email: 'bijaybohora22@gmail.com',
       Bidunit: '10',
       country: 'India',
       CountryCode: 'IN',
-      created_at: '2023-09-27 00:00:00',
+      created_at: '2023-09-27 06:00:00',
     },
     {
-      sn: '1',
+      sn: '3',
       email: 'hemraj@gmail.com',
       Bidunit: '15',
       country: 'China',
       CountryCode: 'CN',
-      created_at: '2023-09-27 00:00:00',
+      created_at: '2023-09-27 08:00:00',
     },
     {
-      sn: '1',
+      sn: '4',
       email: 'vision12@gmail.com',
       Bidunit: '25',
       country: 'Nepal',
       CountryCode: 'NP',
-      created_at: '2023-09-27 00:00:00',
+      created_at: '2023-09-27 12:00:00',
     },
     {
-      sn: '1',
+      sn: '5',
       email: 'prazitstha22@gmail.com',
       Bidunit: '5',
       country: 'Nepal',
       CountryCode: 'NP',
-      created_at: '2023-09-27 00:00:00',
+      created_at: '2023-09-27 18:00:00',
     },
   ];
 
@@ -65,6 +65,9 @@ const ProductDetails = ({navigation}) => {
     <View style={{marginBottom: 10}}>
       <View style={productStyle.currencyInfoContainerStyle}>
         <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          <View style={{marginRight: 10}}>
+            <Text style={{fontSize: 16, fontWeight: '600'}}>{item.sn}</Text>
+          </View>
           <View
             style={{
               marginLeft: 10,
@@ -90,36 +93,18 @@ const ProductDetails = ({navigation}) => {
             </View>
 
             <View style={{flexDirection: 'row'}}>
-              <Text>{moment(item.created_at).format('MMMM DD, YYYY')} </Text>
+              <Text>{moment(item.created_at).format('lll')} </Text>
               {/* {currentTitle !== 'LUCKYDRAW WINNERS' && <Text> {moment(item.created_at).format('hh:mm A')}</Text>} */}
             </View>
           </View>
         </View>
         <View>
           {item?.Bidunit ? (
-            <Text
-              style={{
-                fontWeight: '500',
-                textAlign: 'right',
-                color: COLORS.dark,
-                marginBottom: 3,
-              }}>
-              {item.Bidunit}
-            </Text>
+            <View style={productStyle.bidUnitView}>
+              <Text style={productStyle.bidBtnText}>{item.Bidunit}</Text>
+            </View>
           ) : (
             ''
-          )}
-          {item.entry_count && (
-            <Text
-              style={{
-                fontWeight: '400',
-                color: 'gray',
-                fontSize: 12,
-
-                textAlign: 'right',
-              }}>
-              {item.entry_count} X
-            </Text>
           )}
         </View>
       </View>
@@ -192,9 +177,21 @@ const ProductDetails = ({navigation}) => {
               ]}>
               Latest Biddings
             </Text>
+            <View style={productStyle.bidListHeader}>
+              <View style={productStyle.bidListHeader1}>
+                <Text style={productStyle.bidListHeadText}>Sn.</Text>
+              </View>
+              <View style={productStyle.bidListHeader2}>
+                <Text style={productStyle.bidListHeadText}>Email/Date</Text>
+              </View>
+              <View style={productStyle.bidListHeader3}>
+                <Text style={productStyle.bidListHeadText}>Bid unit</Text>
+              </View>
+            </View>
             <FlatList
               data={winnerList}
               renderItem={renderItem}
+              scrollEnabled={false}
               keyExtractor={(item, index) => index.toString()}
               // refreshControl={
               //   <RefreshControl

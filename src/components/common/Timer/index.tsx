@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   text: {
-    color: '#1a405e',
+    color: '#000000',
     fontWeight: 'bold',
   },
   textSecondary: {
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     borderWidth: 1,
     // borderColor: 'gold',
-    borderColor: '#1a405e',
+    borderColor: '#ccc',
     height: 40,
     width: 50,
     // paddingHorizontal: 10,

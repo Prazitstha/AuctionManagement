@@ -1,9 +1,13 @@
-import { useEffect, useMemo, useState, useRef } from 'react';
+import {useEffect, useMemo, useState, useRef} from 'react';
 import moment from 'moment-timezone';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 const useCountdown = () => {
   const georgiaTimezonee = 'Asia/Tbilisi';
-  const [remainingTime, setRemainingTime] = useState({ hours: '', minutes: '', seconds: '' });
+  const [remainingTime, setRemainingTime] = useState({
+    hours: '',
+    minutes: '',
+    seconds: '',
+  });
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -14,7 +18,7 @@ const useCountdown = () => {
       const hours = String(diff.hours()).padStart(2, '0');
       const minutes = String(diff.minutes()).padStart(2, '0');
       const seconds = String(diff.seconds()).padStart(2, '0');
-      setRemainingTime({ hours, minutes, seconds });
+      setRemainingTime({hours, minutes, seconds});
       //   setHours(hours);
       //   setMinutes(minutes);
       //   setSeconds(seconds);
@@ -28,7 +32,11 @@ const useCountdown = () => {
   //   return remainingTime;
 };
 const useCountdownPinLock = () => {
-  const [remainingTime, setRemainingTime] = useState({ hours: '', minutes: '', seconds: '' });
+  const [remainingTime, setRemainingTime] = useState({
+    hours: '',
+    minutes: '',
+    seconds: '',
+  });
   const [values, setValues] = useState();
   // useEffect(() => {
   //   AsyncStorage.getItem('lockTime').then(value => {
@@ -59,7 +67,7 @@ const useCountdownPinLock = () => {
       const minutes = String(duration.minutes()).padStart(2, '0');
       const seconds = String(duration.seconds()).padStart(2, '0');
 
-      setRemainingTime({ hours, minutes, seconds });
+      setRemainingTime({hours, minutes, seconds});
     }, 1000);
 
     return () => {
@@ -89,4 +97,4 @@ const useCountdownPinLock = () => {
   //   return remainingTime;
 };
 
-export { useCountdown, useCountdownPinLock };
+export {useCountdown, useCountdownPinLock};

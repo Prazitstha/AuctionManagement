@@ -3,6 +3,7 @@ export enum Screen {
   GUESTNAVIGATOR = 'GuestNavigator',
   HOMESTACK = 'HomeStack',
   HOMEDRAWER = 'HomeDrawer',
+  PURCHASEBIDCOIN = 'PurchaseBidCoin',
   SETTINGSTACK = 'SettingStack',
   EXPLORESTACK = 'ExploreStack',
   LOGIN = 'Login',

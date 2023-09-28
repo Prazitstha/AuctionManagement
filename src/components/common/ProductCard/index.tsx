@@ -19,9 +19,10 @@ const ProductCard = () => {
       <FlatList
         data={products}
         renderItem={({item}) => <ProductCardView />}
-        numColumns={2}
-        scrollEnabled={false}
-        // horizontal
+        showsHorizontalScrollIndicator={false}
+        // numColumns={2}
+        // scrollEnabled={false}
+        horizontal
         contentContainerStyle={{alignItems: 'center'}}
       />
     </View>

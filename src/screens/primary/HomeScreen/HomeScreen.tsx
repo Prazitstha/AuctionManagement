@@ -1,4 +1,11 @@
-import {View, Text, StyleSheet, Image, ScrollView} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  ScrollView,
+  ImageBackground,
+} from 'react-native';
 import React from 'react';
 import {BackgroundColor, COLORS} from '../../../assets/themes/Colors';
 import {homeStyle} from './HomeStyle';
@@ -6,16 +13,21 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 import {LinearGradient} from 'react-native-linear-gradient';
 import {CountdownTimer} from '../../../components/common/Timer';
 import ProductCard from '../../../components/common/ProductCard';
+import Icon from '../../../components/common/Icon';
 const HomeScreen = ({navigation}) => {
   return (
     <View style={homeStyle.dashboard}>
       <View style={homeStyle.bannerHeader}>
-        <Text style={homeStyle.bannerTitle}>Hello, Prajit</Text>
-        <TouchableOpacity onPress={() => navigation.openDrawer()}>
+        <View style={homeStyle.bannerFirst}>
           <Image
             source={require('../../../assets/icons/iconProfile.png')}
             style={{height: 40, width: 40, borderRadius: 60}}
           />
+
+          <Text style={homeStyle.bannerTitle}>Hello, Prajit</Text>
+        </View>
+        <TouchableOpacity onPress={() => navigation.openDrawer()}>
+          <Icon type={'ionicon'} name={'menu'} color="grey" size={30} />
         </TouchableOpacity>
       </View>
 
@@ -53,12 +65,79 @@ const HomeScreen = ({navigation}) => {
               </View>
               <View style={{width: '50%'}}>
                 <Image
-                  source={require('../../../assets/images/iphone.png')}
-                  style={{height: '100%', width: '100%', resizeMode: 'cover'}}
+                  source={require('../../../assets/images/newusdt.png')}
+                  style={{
+                    height: '100%',
+                    width: '100%',
+                    resizeMode: 'contain',
+                    // borderColor: '#CCC',
+                    // borderWidth: 1,
+                  }}
                 />
               </View>
             </LinearGradient>
           </View>
+          <View style={homeStyle.midSection}>
+            <View>
+              <Text style={{fontSize: 24, fontWeight: '600'}}>0.00</Text>
+              <Text>Balance</Text>
+            </View>
+            <View style={{flexDirection: 'column', alignItems: 'center'}}>
+              <Icon
+                type={'ionicon'}
+                name="wallet-outline"
+                size={35}
+                color="grey"
+              />
+              <Text>Purchase</Text>
+            </View>
+          </View>
+          {/* <View style={homeStyle.requestProductView}>
+            <View
+              style={{
+                backgroundColor: '#1a405e',
+                width: '48%',
+                borderRadius: 5,
+                paddingVertical: 12,
+              }}>
+              <TouchableOpacity onPress={() => {}}>
+                <Text style={{color: '#ffffff', textAlign: 'center'}}>
+                  Something
+                </Text>
+              </TouchableOpacity>
+            </View>
+            <View
+              style={{
+                backgroundColor: '#1a405e',
+                width: '48%',
+                borderRadius: 5,
+                paddingVertical: 12,
+              }}>
+              <TouchableOpacity onPress={() => {}}>
+                <Text style={{color: '#ffffff', textAlign: 'center'}}>
+                  Request Products
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </View> */}
+          {/* <View style={homeStyle.requestProductView}>
+            <ImageBackground
+              source={require('../../../assets/images/bannerImage2.png')}
+              style={{
+                height: '100%',
+                // width: '100%',
+                // resizeMode: 'cover',
+                borderRadius: 10,
+                overflow: 'hidden',
+              }}>
+              <Text>Want to Request Products for Auction ?</Text>
+              <TouchableOpacity
+                onPress={() => {}}
+                style={homeStyle.requestProduct}>
+                <Text style={homeStyle.requestProductText}>Request</Text>
+              </TouchableOpacity>
+            </ImageBackground>
+          </View> */}
           <View style={homeStyle.liveAuctionTitleArea}>
             <Text style={homeStyle.liveAucText}>Live Auction</Text>
             <TouchableOpacity style={homeStyle.liveAucViewall}>
@@ -66,6 +145,24 @@ const HomeScreen = ({navigation}) => {
             </TouchableOpacity>
           </View>
           <ProductCard />
+          {/* <View style={homeStyle.requestProductView}>
+            <ImageBackground
+              source={require('../../../assets/images/bannerImage2.png')}
+              style={{
+                height: '100%',
+                width: '100%',
+                // resizeMode: 'cover',
+                borderRadius: 10,
+                overflow: 'hidden',
+              }}>
+              <Text>Want to Request Products for Auction ?</Text>
+              <TouchableOpacity
+                onPress={() => {}}
+                style={homeStyle.requestProduct}>
+                <Text style={homeStyle.requestProductText}>Request</Text>
+              </TouchableOpacity>
+            </ImageBackground>
+          </View> */}
         </ScrollView>
       </View>
     </View>
